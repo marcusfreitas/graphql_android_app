@@ -1,4 +1,4 @@
-package com.example.githubreposearch
+package com.example.githubreposearch.ui.home.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.githubreposearch.R
 import com.example.githubreposearch.dummy.DummyContent
+import com.example.githubreposearch.ui.home.view.fragment.ItemDetailFragment
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlinx.android.synthetic.main.item_list.*
 import kotlinx.android.synthetic.main.item_list_content.view.*
 
-class ItemListActivity : AppCompatActivity() {
+class GitHubRepoListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,8 @@ class ItemListActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(DummyContent.ITEMS)
+        recyclerView.adapter =
+            SimpleItemRecyclerViewAdapter(DummyContent.ITEMS)
     }
 
     class SimpleItemRecyclerViewAdapter(private val values: List<DummyContent.DummyItem>) :
@@ -43,7 +46,7 @@ class ItemListActivity : AppCompatActivity() {
         init {
             onClickListener = View.OnClickListener { v ->
                 val item = v.tag as DummyContent.DummyItem
-                val intent = Intent(v.context, ItemDetailActivity::class.java).apply {
+                val intent = Intent(v.context, GitHubRepoDetailActivity::class.java).apply {
                     putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id)
                 }
                 v.context.startActivity(intent)
