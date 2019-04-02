@@ -55,8 +55,10 @@ class HomePresenterTest {
         presenter.getList(query)
 
         //then
+        then(mockView).should().showLoadingProgress()
         then(mockUseCase).should().get(query)
         then(mockView).should().setupRecyclerView(repoList)
+        then(mockView).should().closeProgressDialog()
     }
 
     @Test
@@ -69,6 +71,7 @@ class HomePresenterTest {
         presenter.getList(query)
 
         //then
+        then(mockView).should().showLoadingProgress()
         then(mockUseCase).should().get(query)
         then(mockView).should().showLoadDataError()
     }

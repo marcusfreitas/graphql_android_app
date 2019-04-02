@@ -18,7 +18,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'AUTH_TOKEN', "\"4b144e20aec755bb0654b3d694d129012ce313fe\""
+        it.buildConfigField 'String', 'AUTH_TOKEN', "\"b59957e6f1f327483f7604b2dd106d0afcf01552\""
         it.buildConfigField 'String', "BASE_URL", "\"https://api.github.com/graphql\""
     }
 
@@ -38,6 +38,10 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+    }
+
+    packagingOptions {
+        pickFirst 'mockito-extensions/org.mockito.plugins.MockMaker'
     }
 }
 
@@ -64,6 +68,9 @@ dependencies {
 
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'org.mockito:mockito-android:2.18.3'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
 }

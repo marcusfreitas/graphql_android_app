@@ -23,6 +23,7 @@ class HomePresenter(
     }
 
     override fun getList(query: String) {
+        view?.showLoadingProgress()
         compositeDisposable.add(useCase.get(query)
             .observeOn(scheduler.ui())
             .subscribeOn(scheduler.io())
@@ -33,6 +34,7 @@ class HomePresenter(
                     Timber.e(throwable)
                     view?.showLoadDataError()
                 }
+                view?.closeProgressDialog()
             })
     }
 

@@ -8,6 +8,8 @@ interface HomeContract {
         fun setupRecyclerView(list: List<GitHubRepositoryModel>)
         fun openDetailActivity(repository: GitHubRepositoryModel)
         fun showLoadDataError()
+        fun showLoadingProgress()
+        fun closeProgressDialog()
     }
 
     interface Presenter {

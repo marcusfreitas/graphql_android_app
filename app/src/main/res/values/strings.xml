@@ -2,4 +2,6 @@
     <string name="app_name">GitHubRepoSearch</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="load_data_error">Error trying to load the data</string>
+    <string name="action_search">Search GitHub</string>
+    <string name="search_hint">Search for GitHub Repositories</string>
 </resources>

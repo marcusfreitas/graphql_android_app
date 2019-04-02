@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.Provides
 
 @Module(includes = [RemoteModule::class])
-class DomainModule {
+open class DomainModule {
 
     @Provides
-    fun providesGitHubRepoUseCase(repository: GitHubReposRepository) = GitHubReposUseCase(repository)
+    open fun providesGitHubRepoUseCase(repository: GitHubReposRepository) = GitHubReposUseCase(repository)
 }

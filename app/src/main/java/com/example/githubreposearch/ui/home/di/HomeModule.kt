@@ -9,10 +9,10 @@ import dagger.Module
 import dagger.Provides
 
 @Module(includes = [DomainModule::class])
-class HomeModule {
+open class HomeModule {
 
     @Provides
-    fun providesHomePresenter(
+    open fun providesHomePresenter(
         useCase: GitHubReposUseCase,
         schedulerProvider: BaseSchedulerProvider
     ): HomeContract.Presenter = HomePresenter(useCase, schedulerProvider)

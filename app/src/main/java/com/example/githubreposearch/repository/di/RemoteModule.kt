@@ -9,11 +9,12 @@ import dagger.Module
 import dagger.Provides
 
 @Module(includes = [NetModule::class])
-class RemoteModule {
+open class RemoteModule {
 
     @Provides
-    fun providesGitHubReposRepository(client: ApolloClient): GitHubReposRepository = GitHubReposRepositoryImpl(client)
+    open fun providesGitHubReposRepository(client: ApolloClient): GitHubReposRepository =
+        GitHubReposRepositoryImpl(client)
 
     @Provides
-    fun providesScheduler(): BaseSchedulerProvider = SchedulerProvider()
+    open fun providesScheduler(): BaseSchedulerProvider = SchedulerProvider()
 }
