@@ -6,10 +6,10 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.example.githubreposearch.R
-import com.example.githubreposearch.ui.home.view.fragment.ItemDetailFragment
+import com.example.githubreposearch.ui.home.view.fragment.DetailFragment
 import kotlinx.android.synthetic.main.activity_item_detail.*
 
-class GitHubRepoDetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +24,11 @@ class GitHubRepoDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (savedInstanceState == null) {
-            val fragment = ItemDetailFragment().apply {
+            val fragment = DetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(
-                        ItemDetailFragment.ARG_ITEM_ID,
-                        intent.getStringExtra(ItemDetailFragment.ARG_ITEM_ID)
+                        DetailFragment.ARG_ITEM,
+                        intent.getStringExtra(DetailFragment.ARG_ITEM)
                     )
                 }
             }
@@ -43,7 +43,7 @@ class GitHubRepoDetailActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
 
-                navigateUpTo(Intent(this, GitHubRepoListActivity::class.java))
+                navigateUpTo(Intent(this, HomeActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
