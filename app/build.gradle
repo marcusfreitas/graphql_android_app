@@ -29,7 +29,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'AUTH_TOKEN', "\"<AUTH TOKE HERE>\""
+        it.buildConfigField 'String', 'AUTH_TOKEN', "\"<AUTH TOKEN HERE>\""
         it.buildConfigField 'String', "BASE_URL", "\"https://api.github.com/graphql\""
     }
 
