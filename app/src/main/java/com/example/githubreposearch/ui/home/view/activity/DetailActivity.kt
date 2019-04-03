@@ -1,11 +1,10 @@
 package com.example.githubreposearch.ui.home.view.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.example.githubreposearch.R
+import com.example.githubreposearch.domain.model.GitHubRepositoryModel
 import com.example.githubreposearch.ui.home.view.fragment.DetailFragment
 import kotlinx.android.synthetic.main.activity_item_detail.*
 
@@ -16,19 +15,14 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item_detail)
         setSupportActionBar(detail_toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (savedInstanceState == null) {
             val fragment = DetailFragment().apply {
                 arguments = Bundle().apply {
-                    putString(
+                    putParcelable(
                         DetailFragment.ARG_ITEM,
-                        intent.getStringExtra(DetailFragment.ARG_ITEM)
+                        intent.getParcelableExtra<GitHubRepositoryModel>(DetailFragment.ARG_ITEM)
                     )
                 }
             }
@@ -43,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
 
-                navigateUpTo(Intent(this, HomeActivity::class.java))
+                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.githubreposearch.R
 import com.example.githubreposearch.domain.model.GitHubRepositoryModel
 import kotlinx.android.synthetic.main.item_list_content.view.*
@@ -22,8 +24,13 @@ class GitHubRepoAdapter(private val values: List<GitHubRepositoryModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.name
-        holder.contentView.text = item.description
+        holder.repoName.text = item.name
+        holder.repoDescription.text = item.description
+        holder.forkCount.text = item.forksCount.toString()
+
+        Glide.with(holder.holderView)
+            .load(item.avatarUrl)
+            .into(holder.userAvatar)
 
         with(holder.itemView) {
             tag = item
@@ -34,7 +41,10 @@ class GitHubRepoAdapter(private val values: List<GitHubRepositoryModel>) :
     override fun getItemCount() = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.id_text
-        val contentView: TextView = view.content
+        val holderView = view
+        val repoName: TextView = view.repo_name
+        val repoDescription: TextView = view.repo_description
+        val forkCount: TextView = view.repo_fork_count
+        val userAvatar: ImageView = view.user_avatar
     }
 }

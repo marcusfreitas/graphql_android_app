@@ -29,11 +29,7 @@
         <activity
                 android:name="com.example.githubreposearch.ui.home.view.activity.DetailActivity"
                 android:label="@string/title_item_detail"
-                android:parentActivityName="com.example.githubreposearch.ui.home.view.activity.HomeActivity"
                 android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.example.githubreposearch.ui.home.view.activity.HomeActivity"/>
         </activity>
     </application>
 

@@ -31,6 +31,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     private var recyclerView: RecyclerView? = null
     private var progressDialog: ProgressDialog? = null
+    private var savedList: List<GitHubRepositoryModel>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,12 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         recyclerView = item_list
 
         presenter.attach(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        presenter.detach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -80,6 +87,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
     }
 
     override fun setupRecyclerView(list: List<GitHubRepositoryModel>) {
+        savedList = list
         val adapter = GitHubRepoAdapter(list)
         adapter.onClickListener = View.OnClickListener { v ->
             presenter.itemClick(v.tag as GitHubRepositoryModel)
