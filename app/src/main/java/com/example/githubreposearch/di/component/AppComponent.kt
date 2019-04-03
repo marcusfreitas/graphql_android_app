@@ -1,19 +1,27 @@
 package com.example.githubreposearch.di.component
 
-import com.example.githubreposearch.di.module.AppModule
-import com.example.githubreposearch.domain.di.DomainModule
-import com.example.githubreposearch.repository.di.NetModule
-import com.example.githubreposearch.repository.di.RemoteModule
-import com.example.githubreposearch.ui.home.di.HomeModule
-import com.example.githubreposearch.ui.home.view.activity.HomeActivity
+import android.app.Application
+import com.example.githubreposearch.MainApplication
+import com.example.githubreposearch.di.module.ActivityBuilder
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [AppModule::class, DomainModule::class, NetModule::class,
-        RemoteModule::class, HomeModule::class]
+    modules = [AndroidInjectionModule::class, ActivityBuilder::class]
 )
 interface AppComponent {
-    fun inject(activity: HomeActivity)
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun application(application: Application): Builder
+
+        fun build(): AppComponent
+    }
+
+    fun inject(application: MainApplication)
 }

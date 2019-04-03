@@ -1,19 +1,22 @@
 package com.example.githubreposearch
 
+import android.app.Activity
 import android.app.Application
-import com.example.githubreposearch.di.component.AppComponent
 import com.example.githubreposearch.di.component.DaggerAppComponent
-import com.example.githubreposearch.di.module.AppModule
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
-class MainApplication : Application() {
+class MainApplication : Application(), HasActivityInjector {
 
-    lateinit var appComponent: AppComponent
+    @Inject
+    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector() = dispatchingActivityInjector
 
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .build()
+        DaggerAppComponent.builder().application(this).build().inject(this)
     }
 }

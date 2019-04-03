@@ -10,12 +10,12 @@ import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.githubreposearch.MainApplication
 import com.example.githubreposearch.R
 import com.example.githubreposearch.domain.model.GitHubRepositoryModel
 import com.example.githubreposearch.ui.home.presenter.HomeContract
 import com.example.githubreposearch.ui.home.view.adapter.GitHubRepoAdapter
 import com.example.githubreposearch.ui.home.view.fragment.DetailFragment
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlinx.android.synthetic.main.item_list.*
 import org.jetbrains.anko.indeterminateProgressDialog
@@ -35,7 +35,9 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as MainApplication).appComponent.inject(this)
+
+        AndroidInjection.inject(this)
+
         setContentView(R.layout.activity_item_list)
 
         setSupportActionBar(toolbar)
