@@ -1,41 +1,38 @@
 # 📱 GraphQL Android App
 
-A sample **Android application** showcasing how to consume a **GraphQL API** using modern Android tools and best practices.  
-Built with **Kotlin**, **Jetpack Compose**, and **MVVM architecture**, this project demonstrates scalable code organization, clean UI, and reactive data handling.
+A sample **Android application** demonstrating how to consume a **GraphQL API** while applying **Clean Architecture** principles.  
+The project emphasizes a clear separation of responsibilities, making the codebase easier to read, maintain, and test.  
+
+On the **UI layer**, the app follows the **MVP pattern**, ensuring improved readability and testability.  
 
 ---
 
 ## 🚀 Features
 
-- 🔗 Integration with a **GraphQL API** for queries and mutations  
-- 🏗️ **Modern Android architecture** (MVVM + Clean Architecture principles)  
-- ⚡ **Kotlin Coroutines & Flow** for asynchronous operations  
-- 🎨 **Jetpack Compose** for building reactive and declarative UI  
-- 📦 **Hilt** for Dependency Injection  
-- 🌐 **Retrofit** with a GraphQL converter for networking  
-- 🔄 Lifecycle-aware state management with **ViewModel & Flow**  
-- 🛡️ Error handling, loading states, and clean separation of concerns  
+- 🔗 GraphQL API integration for queries and mutations  
+- 🧩 **Clean Architecture** for separation of concerns  
+- 🖼️ **MVP pattern** in the UI layer for better structure and testing  
+- 🛠️ **Dagger 2** for Dependency Injection  
+- ⚡ **RxJava** for handling asynchronous GraphQL calls  
+- ✅ Unit testing with **Mockito**  
 
 ---
 
 ## 🛠 Tech Stack
 
 - **Language:** Kotlin  
-- **UI:** Jetpack Compose  
-- **Architecture:** MVVM, modular design  
-- **Networking:** Retrofit + GraphQL converter  
-- **Concurrency:** Kotlin Coroutines, Flow  
-- **Dependency Injection:** Hilt  
+- **Architecture:** Clean Architecture + MVP  
+- **Networking:** GraphQL API (via RxJava)  
+- **Dependency Injection:** Dagger 2  
+- **Concurrency/Reactive:** RxJava  
 - **Testing:** JUnit, Mockito  
 
 ---
 
 ## 🎯 Purpose
 
-This project serves as a reference for Android developers looking to:  
+This project was built as a reference to:  
 
-- Implement **GraphQL APIs** in Android apps  
-- Explore **modern Android development tools** (Compose, Hilt, Coroutines)  
-- Learn how to structure apps using **clean, maintainable architectures**  
-
----
+- Showcase **GraphQL integration** in Android apps  
+- Demonstrate **Clean Architecture** and **MVP** in practice  
+- Highlight testable, maintainable, and scalable Android codebases  
